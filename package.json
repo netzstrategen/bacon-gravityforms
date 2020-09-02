@@ -1,0 +1,17 @@
+{
+  "name": "@netzstrategen/bacon-gravityforms",
+  "version": "0.1.0",
+  "title": "Bacon + Gravity Forms",
+  "description": "netzstrategen Gravity Forms reset library",
+  "homepage": "http://www.netzstrategen.com",
+  "bugs": "https://github.com/netzstrategen/bacon-gravityforms/issues",
+  "author": "netzstrategen <hallo@netzstrategen.com>",
+  "main": "bacon-gravityforms.scss",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/netzstrategen/bacon-gravityforms.git"
+  },
+  "dependencies": {
+    "bacon": "^0.10.2"
+  }
+}

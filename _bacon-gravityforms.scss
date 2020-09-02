@@ -1,0 +1,428 @@
+/**
+ * Settings.
+ */
+
+$gfield-spacing-y: $global-spacing-unit !default;
+$gfield-spacing-x: $global-spacing-unit !default;
+
+$gf-confirmation-padding: 1em !default;
+$gf-confirmation-bg-color: #f9faf4 !default;
+$gf-confirmation-bg-image: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g><circle cx="8" cy="8" r="8" fill="%230dab13"/><path fill="%23ffffff" d="M11.893 5.116l.191.205.069-.072.002-.232-.165-.002-.097.101h0zm-5.51 5.712l-.177.184.114.12h.114l.12-.123-.17-.181h0zm-2.28-2.422l-.098-.105-.158.001v.239l.067.069.19-.204h0zm2.28 1.632l5.713-5.878.9.965-6.62 6.861-3.368-3.578.898-.965 2.476 2.594h0z"/></g></svg>' !default;
+$gf-confirmation-bg-size: 16px !default;
+$gf-confirmation-font-size: 0.8rem !default;
+$gf-confirmation-color: #0dab13 !default;
+
+$gf-validation-padding: 1em !default;
+$gf-validation-bg-color: #fff5f5 !default;
+$gf-validation-bg-image: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g><circle cx="8" cy="8" r="8" fill="%23D10600"/><path fill="%23FFF" d="M0.16194332,10 L1.94331984,10 L1.94331984,8.125 L0.16194332,8.125 L0.16194332,10 Z M2.10526316,0 L1.7394332,7.5 L0.366315789,7.5 L0,0 L2.10526316,0 Z" transform="matrix(-1 0 0 1 9.105 3)"/></g></svg>' !default;
+$gf-validation-bg-size: 16px !default;
+$gf-validation-font-size: 0.9375em !default;
+$gf-validation-color: #e60000 !default;
+
+$gf-drop-area-bg: rgba(0, 0, 0, 0.1) !default;
+$gf-drop-area-font-size: 0.8rem !default;
+$gf-drop-area-color: rgba(0, 0, 0, 0.5) !default;
+
+
+/**
+* Base Gravity Forms fields layout.
+*
+* Primarily copied from/based upon gravityforms/css/formsmain.css.
+*/
+
+.gform_wrapper {
+  box-sizing: border-box;
+
+  * {
+    &,
+    &:before,
+    &:after {
+      box-sizing: inherit;
+    }
+  }
+}
+
+// Custom class which must be added via filter. See README.
+.gform_form_tag {
+  max-width: 100%;
+  text-align: left;
+  font-size: 1rem; // Ensure container styles don't interfere.
+}
+
+.gform_heading {
+  margin-bottom: $gfield-spacing-y * 1.5;
+}
+
+.gform_fields {
+  margin: 0;
+  list-style: none;
+}
+
+.gfield {
+  margin: 0 auto;
+  margin-bottom: $gfield-spacing-y * 1.5;
+  clear: both;
+}
+
+.gfield_checkbox,
+.gfield_radio {
+  margin: 0;
+  list-style: none;
+
+  li + li {
+    margin-top: $gfield-spacing-y;
+  }
+}
+
+// Side-by-side layout of labels and inputs.
+.gform_fields:not(.top_label) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  // stylelint-disable-next-line no-descending-specificity
+  .gfield {
+    width: 100%;
+
+    @media (min-width: 800px) {
+      display: flex;
+
+      .gfield_label {
+        flex-shrink: 0;
+        width: calc(30% - #{$gfield-spacing-x});
+      }
+
+      .clear-multi,
+      .gfield_description,
+      .ginput_container:not(.ginput_container_time):not(.ginput_container_date) {
+        flex-shrink: 0;
+        width: 70%;
+      }
+    }
+  }
+
+  @media (min-width: 800px) {
+    &.left_label .gfield_label {
+      margin-right: $gfield-spacing-x;
+    }
+
+    &.right_label .gfield_label {
+      order: 1;
+      margin-left: $gfield-spacing-x;
+    }
+
+    .gfield_html_formatted {
+      width: 70%;
+    }
+  }
+}
+
+// Add extra space between label and lists of checkboxes.
+.ginput_container_checkbox,
+.ginput_container_radio {
+
+  .gfield_label + & {
+    margin-top: 0.75em;
+  }
+}
+
+.gfield_description {
+
+  .ginput_container ~ & {
+    margin-top: 0.25em; // Matches <label> spacing.
+  }
+}
+
+// Validation error messages.
+.validation_error,
+.validation_message {
+  background-image: url($gf-validation-bg-image);
+  background-size: $gf-validation-bg-size;
+  background-repeat: no-repeat;
+  font-size: $gf-validation-font-size;
+  font-weight: 600;
+  color: $gf-validation-color;
+}
+
+// Boxed message at top of form.
+.validation_error {
+  padding: $gf-validation-padding $gf-validation-padding $gf-validation-padding $gf-validation-padding * 3;
+  border: 1px $gf-validation-color solid;
+  border-radius: $input-radius;
+  margin-bottom: $gf-validation-padding * 2;
+  background-color: $gf-validation-bg-color;
+  background-position: left $gf-validation-padding center;
+}
+
+// Validation message below field.
+.validation_message {
+  padding-left: $gf-validation-padding * 1.5;
+  margin-top: 2px;
+  background-position: left center;
+}
+
+// Confirmation message shown at top of form.
+.gform_confirmation_message {
+  padding: $gf-confirmation-padding $gf-confirmation-padding $gf-confirmation-padding $gf-confirmation-padding * 3;
+  border: 1px $gf-confirmation-color solid;
+  border-radius: $input-radius;
+  background-image: url($gf-confirmation-bg-image);
+  background-color: $gf-confirmation-bg-color;
+  background-position: left $gf-confirmation-padding center;
+  background-size: $gf-confirmation-bg-size;
+  background-repeat: no-repeat;
+  font-size: $gf-confirmation-font-size;
+  font-weight: 600;
+  color: $gf-confirmation-color;
+}
+
+// Hide intentionally-hidden text added by GF.
+.screen-reader-text,
+label.hidden_sub_label,
+.hidden_label .gfield_label {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  margin: -1px;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  word-wrap: normal !important;
+}
+
+// Hide fields set to hidden.
+.gfield_visibility_hidden,
+.gf_invisible {
+  position: absolute;
+  left: -9999px;
+  visibility: hidden;
+}
+
+// Hide honeypot validation field.
+.gform_validation_container {
+  position: absolute !important;
+  left: -9000px;
+  display: none !important;
+}
+
+
+/**
+* Standard field split layouts.
+*/
+
+.ginput_complex {
+  font-size: 0;
+
+  > span {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 1rem;
+
+    &.ginput_full {
+      width: 100%;
+    }
+
+    &.ginput_right,
+    &.ginput_left,
+    &.name_first,
+    &.name_last {
+      width: calc(50% - (#{$gfield-spacing-x} / 2));
+    }
+
+    &.ginput_right,
+    &.name_last {
+      margin-left: $gfield-spacing-x;
+    }
+  }
+}
+
+
+/**
+* Custom Gravity Forms element styling.
+*/
+
+// Page steps.
+.gf_page_steps {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gf_step {
+  display: flex;
+  align-items: center;
+  margin-right: $gfield-spacing-x;
+
+  &.gf_step_active {
+    font-weight: bold;
+  }
+
+  // Hide step labels on smaller screens.
+  @media (max-width: 799px) {
+    &:not(.gf_step_active) .gf_step_label {
+      display: none;
+    }
+  }
+}
+
+.gform_drop_area {
+  padding: $input-padding-y * 2 $input-padding-x * 2;
+  border: $input-border-width $input-border-color dashed;
+  border-radius: $input-radius;
+  margin-bottom: $gfield-spacing-y;
+  text-align: center;
+  background: $gf-drop-area-bg;
+  color: $gf-drop-area-color;
+
+  &,
+  .button {
+    font-size: $gf-drop-area-font-size;
+  }
+
+  .gform_drop_instructions {
+    display: block;
+    margin-bottom: $gfield-spacing-x;
+  }
+}
+
+
+/**
+* Datepicker styling.
+*/
+
+.ui-datepicker {
+  width: 256px;
+  height: auto;
+  padding: 10px 20px 20px;
+  border: 1px #969696 solid;
+  margin: 5px auto 0;
+  font-size: 13px;
+  background-color: #f7f7f7;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+
+  // Basic datepicker element styling/setup.
+  a {
+    text-decoration: none;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  // Days of week header row.
+  thead {
+    th {
+      padding: 5px 0;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+  }
+
+  // Individual days as table cells.
+  tbody {
+    td {
+      padding: 0;
+      border: 1px #b9b9b9 solid;
+
+      // Clickable/visible element showing date.
+      // States defined below.
+      span,
+      a {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        color: #737373;
+      }
+
+      // Unselectable state (e.g. in the past).
+      &.ui-datepicker-unselectable {
+
+        // Filler cells for empty days in a row.
+        &.ui-state-disabled {
+          background-color: #d7d7d7;
+        }
+
+        // Cell filled but unselectable.
+        .ui-state-default {
+          background-color: #f4f4f4;
+          color: #b4b3b3;
+        }
+      }
+
+      // Today.
+      &.ui-datepicker-today .ui-state-default {
+        font-weight: 700;
+      }
+    }
+
+    // Default state of span/a element.
+    // stylelint-disable-next-line no-descending-specificity
+    .ui-state-default {
+      background-color: #fff;
+      color: #212121;
+    }
+
+    // Hover state.
+    .ui-state-hover {
+      background-color: #b9b9b9;
+      color: #fff;
+    }
+
+    // Selected/active state.
+    .ui-state-active {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+}
+
+.ui-datepicker-header {
+  min-height: 30px !important;
+  line-height: 30px;
+  font-weight: bold;
+}
+
+.ui-datepicker-title {
+  text-align: center;
+
+  select {
+    margin-bottom: 8px;
+    background-size: 15px 9px; // Adjust size of custom arrow icon.
+  }
+}
+
+.ui-datepicker-prev,
+.ui-datepicker-next {
+  display: inline-block;
+  overflow: hidden;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAA8CAYAAACTiBHmAAAABGdBTUEAALGPC/xhBQAAATxJREFUWAntl7FqAkEQhv+TS6cpfIcUQbCRaCdY3qNYmELr4Il1LM7CN9FSuCqXYCOIRd7BQtPFsM4owgrnMXtFLJxtbnd2Zn7244p/AF1KQAkogUsCg48phovny6D8VBClGgT4+11ikEQYrcqiGitJJnIq8GFMB9vdN4l1MDe+1Sdz6yJyblQmsQhxQi/7Cs7BrG8ekax+qXfiJ1vVG3heiGZ9gpa3t+JXty4ie2o+QakYolvZXO2YciET8TBD4aGHt9o6pYeGlIASUAJKQAkoASVwtwTY5bPbFyyZ77Ibsavf/YTk8tsUFtWLko4a7OLjzza5+pDOTuODTITde5y8wyDXIPQvrl4m0n+ZodmokuF+JVROZptRy0Q4k8eEfmOMx9ITiY0pIhobuDT/cviF84topRJQAkrgdgQONpJEYZXWsuMAAAAASUVORK5CYII=');
+  background-repeat: no-repeat;
+  line-height: 600%;
+}
+
+.ui-datepicker-prev {
+  float: left;
+  background-position: center -30px;
+}
+
+.ui-datepicker-next {
+  float: right;
+  background-position: center 0;
+}
+
+table.ui-datepicker-calendar {
+  margin: 0 !important;
+}
+
+body div#ui-datepicker-div[style] {
+  z-index: 9999 !important;
+}

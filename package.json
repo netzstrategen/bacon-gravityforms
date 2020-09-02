@@ -12,6 +12,6 @@
     "url": "https://github.com/netzstrategen/bacon-gravityforms.git"
   },
   "dependencies": {
-    "bacon": "^0.10.2"
+    "@netzstrategen/bacon": "^0.10.2"
   }
 }

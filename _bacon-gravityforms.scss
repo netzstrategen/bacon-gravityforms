@@ -240,6 +240,102 @@ label.hidden_sub_label,
 
 
 /**
+* Gravity Forms Ready Classes.
+*
+* @see https://www.gravityforms.com/css-ready-classes/.
+*/
+
+@media only screen and (min-width: 641px) {
+  .gf_left_half,
+  .gf_right_half,
+  .gf_left_third,
+  .gf_middle_third,
+  .gf_right_third,
+  .gf_first_quarter,
+  .gf_second_quarter,
+  .gf_third_quarter,
+  .gf_fourth_quarter,
+  .gf_list_2col .gfield_checkbox li,
+  .gf_list_2col .gfield_radio li,
+  .gf_list_3col .gfield_checkbox li,
+  .gf_list_3col .gfield_radio li,
+  .gf_list_4col .gfield_checkbox li,
+  .gf_list_4col .gfield_radio li {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .gf_left_half:before,
+  .gf_right_half:after,
+  .gf_right_third:after,
+  .gf_fourth_quarter:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+
+  .gf_left_half,
+  .gf_right_half,
+  .gf_list_2col .gfield_checkbox li,
+  .gf_list_2col .gfield_radio li {
+    width: 50%;
+    padding-right: $gfield-spacing-x;
+  }
+
+  .gf_left_third,
+  .gf_middle_third {
+    width: 33.3%;
+  }
+
+  .gf_right_third {
+    width: 33.4%;
+  }
+
+  .gf_first_quarter,
+  .gf_second_quarter,
+  .gf_third_quarter,
+  .gf_fourth_quarter {
+    width: 25%;
+  }
+
+  .gf_list_3col {
+    .gfield_checkbox li
+    .gfield_radio li {
+      width: 33.3%;
+      padding-right: $gfield-spacing-x;
+    }
+  }
+
+  .gf_list_4col {
+    .gfield_checkbox li
+    .gfield_radio li {
+      width: 25%;
+      padding-right: $gfield-spacing-x;
+    }
+  }
+
+  .gf_list_5col {
+    .gfield_checkbox li,
+    .gfield_radio li {
+      width: 20%;
+      padding-right: $gfield-spacing-x;
+    }
+  }
+
+  .gf_list_inline {
+    .gfield_checkbox li,
+    .gfield_radio li {
+      display: inline-block;
+      width: auto;
+      float: none;
+      margin-top: 0;
+      margin-right: $gfield-spacing-x * 2;
+    }
+  }
+}
+
+
+/**
 * Custom Gravity Forms element styling.
 */
 

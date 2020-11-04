@@ -96,4 +96,4 @@ It is known that not all layout CSS has been moved into this library from the Gr
 
 It is also known that this library may require updating from time-to-time dependent on changes made to the Gravity Forms plugin.
 
-If you encounter missing or incomplete layout CSS then first check the primary Gravity Forms stylesheet (located at `plugins/gravityforms/css/formsmain.css`) and secondary stylesheets and copy any relevant CSS into the `Base Gravity Forms fields layout` section of [_bacon-gravityforms.scss_](https://github.com/netzstrategen/bacon-gravityforms/_bacon-gravityforms.scss).
+If you encounter missing or incomplete layout CSS then first check the primary Gravity Forms stylesheet (located at `plugins/gravityforms/css/formsmain.css`) and secondary stylesheets and copy any relevant CSS into the `Base Gravity Forms fields layout` section of [_bacon-gravityforms.scss_](https://github.com/netzstrategen/bacon-gravityforms/blob/master/_bacon-gravityforms.scss).

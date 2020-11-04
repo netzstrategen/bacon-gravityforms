@@ -216,24 +216,34 @@ label.hidden_sub_label,
   font-size: 0;
 
   > span {
-    display: inline-block;
-    vertical-align: top;
+    display: block;
     font-size: 1rem;
+
+    @media only screen and (max-width: 640px) {
+      & + span {
+        margin-top: $gfield-spacing-y * 1.5;
+      }
+    }
+
+    @media only screen and (min-width: 641px) {
+      display: inline-block;
+      vertical-align: top;
+
+      &.ginput_right,
+      &.ginput_left,
+      &.name_first,
+      &.name_last {
+        width: calc(50% - (#{$gfield-spacing-x} / 2));
+      }
+
+      &.ginput_right,
+      &.name_last {
+        margin-left: $gfield-spacing-x;
+      }
+    }
 
     &.ginput_full {
       width: 100%;
-    }
-
-    &.ginput_right,
-    &.ginput_left,
-    &.name_first,
-    &.name_last {
-      width: calc(50% - (#{$gfield-spacing-x} / 2));
-    }
-
-    &.ginput_right,
-    &.name_last {
-      margin-left: $gfield-spacing-x;
     }
   }
 }
